@@ -75,8 +75,8 @@ sim
 ```
 
     ##   capture.class No.Ind
-    ## 1             1     42
-    ## 2             2      4
+    ## 1             1     38
+    ## 2             2      6
 
 Now that we have simulated data, we can use one of the `fitEcm` function to estimate population size. What arguments do we need for that function? Notice that the help page tells you what format your data should be in.
 
@@ -90,7 +90,7 @@ The `fitEcm` page also describes that output. We are most interested in the popu
 ecm$ml.pop.size
 ```
 
-    ## [1] 290
+    ## [1] 187
 
 How much uncertainty is there in our estimate? We can use bootstrap resampling to create confidence intervals. Look up the command `boostrapCapwire`
 
@@ -100,11 +100,11 @@ boot
 ```
 
     ## $ml.pop.size
-    ## [1] 290
+    ## [1] 187
     ## 
     ## $conf.int
     ##  2.5% 97.5% 
-    ##   136   300
+    ##   105   300
 
 Using this 95% confidence interval means there is a 95% chance the real answer is within that range.
 
