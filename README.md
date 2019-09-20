@@ -5,7 +5,9 @@ EVE 109 Section Week 2
 
 For this course, all the information and data we need will be stored in github. You saw github last week when we accessed the first tutorial. We can also use github to share and download data so that we are all working with the same files. A collection of files and scripts on github is called a *repository*. Each week we will download a new repository with the files needed for that week. Right now, you are looking at the webpage for the week 2 repository. Notice the URL is <http://github.com/rachaelbay/EVE109-Week2>. Each week, you can replace the "Week2" with the current week for the section tutorial and homework assignments.
 
-First, we need to copy the repository to our own computer. This is called *cloning*. We can easily do this by clicking the green button that says "Clone or download", then clicking the clipboard button to copy the URL: ![](https://github/com/rachaelbay/EVE109-Week2/Week2_files/figure-markdown_github/Screen1.png)
+First, we need to copy the repository to our own computer. This is called *cloning*. We can easily do this by clicking the green button that says "Clone or download", then clicking the clipboard button to copy the URL:
+
+![](Week2_files/figure-markdown_github/Screen1.png)
 
 We can download this repository onto our computer by creating an R Project:
 1. In RStudio, click *File* then *New Project*.
@@ -75,8 +77,8 @@ sim
 ```
 
     ##   capture.class No.Ind
-    ## 1             1     34
-    ## 2             2      8
+    ## 1             1     40
+    ## 2             2      5
 
 Now that we have simulated data, we can use one of the `fitEcm` function to estimate population size. What arguments do we need for that function? Notice that the help page tells you what format your data should be in.
 
@@ -90,7 +92,7 @@ The `fitEcm` page also describes that output. We are most interested in the popu
 ecm$ml.pop.size
 ```
 
-    ## [1] 136
+    ## [1] 228
 
 How much uncertainty is there in our estimate? We can use bootstrap resampling to create confidence intervals. Look up the command `boostrapCapwire`
 
@@ -100,11 +102,11 @@ boot
 ```
 
     ## $ml.pop.size
-    ## [1] 136
+    ## [1] 228
     ## 
     ## $conf.int
     ##  2.5% 97.5% 
-    ##    77   290
+    ##   119   500
 
 Using this 95% confidence interval means there is a 95% chance the real answer is within that range.
 
