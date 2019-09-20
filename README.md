@@ -13,7 +13,9 @@ We can download this repository onto our computer by creating an R Project:
 1. In RStudio, click *File* then *New Project*.
 2. On the next screen, click *Version control*.
 3. On the next screen, click *Git*.
-4. Paste in the URL you copied, and name the project. You should also tell it where to save these files using the *Browse* button so that you can come back to them later. For example, the following screen shows me saving the repository to the "Documents" on my computer: ![](Week2_files/figure-markdown_github/Screen2.png)
+4. Paste in the URL you copied, and name the project. You should also tell it where to save these files using the *Browse* button so that you can come back to them later. For example, the following screen shows me saving the repository to the "Documents" on my computer:
+
+![](Week2_files/figure-markdown_github/Screen2.png)
 
  
 
@@ -72,18 +74,18 @@ The manual for capwire can be found online [here](https://cran.r-project.org/web
 Okay, now lets make up some data. Luckily, *capwire* has a function that allows you to simulate data. Look up the function `simCapture`. Notice there are three different arguments we need to specify (we can ignore *return.cap.probs* because it has a default that we do not want to change). Using this function we'll simulate a population of 300, from which we have 50 samples. This distribution function just means that every individual has an equal probability of being captured.
 
 ``` r
-sim <- simCapture(n=300,s=50,dist.func=drawCapRatesUnif(0.1,1))
+sim <- simCapture(n=300,s=50,dist.func=drawCapRatesUnif(0.1,1)) # Simulate capture data
 sim
 ```
 
     ##   capture.class No.Ind
-    ## 1             1     40
-    ## 2             2      5
+    ## 1             1     42
+    ## 2             2      4
 
 Now that we have simulated data, we can use one of the `fitEcm` function to estimate population size. What arguments do we need for that function? Notice that the help page tells you what format your data should be in.
 
 ``` r
-ecm <- fitEcm(data=sim,max.pop=500)
+ecm <- fitEcm(data=sim,max.pop=500) # estimate population size
 ```
 
 The `fitEcm` page also describes that output. We are most interested in the population size estimate, which is called `ml.pop.size`. We can extract that using:
@@ -92,23 +94,23 @@ The `fitEcm` page also describes that output. We are most interested in the popu
 ecm$ml.pop.size
 ```
 
-    ## [1] 228
+    ## [1] 290
 
 How much uncertainty is there in our estimate? We can use bootstrap resampling to create confidence intervals. Look up the command `boostrapCapwire`
 
 ``` r
-boot <- bootstrapCapwire(x=ecm,bootstraps=1000,CI=c(0.025,0.975))
+boot <- bootstrapCapwire(x=ecm,bootstraps=1000,CI=c(0.025,0.975)) # estimate confidence intervals
 boot
 ```
 
     ## $ml.pop.size
-    ## [1] 228
+    ## [1] 290
     ## 
     ## $conf.int
     ##  2.5% 97.5% 
-    ##   119   500
+    ##   136   500
 
-Using this 95% confidence interval means there is a 95% chance the real answer is within that range.
+Using this 95% confidence interval means there is a 95% chance the real answer is within that range. Why is it so large?! What happens if we have more samples?
 
      
 
