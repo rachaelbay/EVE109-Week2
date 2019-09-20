@@ -5,13 +5,13 @@ EVE 109 Section Week 2
 
 For this course, all the information and data we need will be stored in github. You saw github last week when we accessed the first tutorial. We can also use github to share and download data so that we are all working with the same files. A collection of files and scripts on github is called a *repository*. Each week we will download a new repository with the files needed for that week. Right now, you are looking at the webpage for the week 2 repository. Notice the URL is <http://github.com/rachaelbay/EVE109-Week2>. Each week, you can replace the "Week2" with the current week for the section tutorial and homework assignments.
 
-First, we need to copy the repository to our own computer. This is called *cloning*. We can easily do this by clicking the green button that says "Clone or download", then clicking the clipboard button to copy the URL: ![](screenshots/Screen1.png)
+First, we need to copy the repository to our own computer. This is called *cloning*. We can easily do this by clicking the green button that says "Clone or download", then clicking the clipboard button to copy the URL: ![](https://github/com/rachaelbay/EVE109-Week2/Week2_files/figure-markdown_github/Screen1.png)
 
 We can download this repository onto our computer by creating an R Project:
 1. In RStudio, click *File* then *New Project*.
 2. On the next screen, click *Version control*.
 3. On the next screen, click *Git*.
-4. Paste in the URL you copied, and name the project. You should also tell it where to save these files using the *Browse* button so that you can come back to them later. For example, the following screen shows me saving the repository to the "Documents" on my computer: ![](screenshots/Screen2.png)
+4. Paste in the URL you copied, and name the project. You should also tell it where to save these files using the *Browse* button so that you can come back to them later. For example, the following screen shows me saving the repository to the "Documents" on my computer: ![](Week2_files/figure-markdown_github/Screen2.png)
 
  
 
@@ -75,13 +75,13 @@ sim
 ```
 
     ##   capture.class No.Ind
-    ## 1             1     38
-    ## 2             2      6
+    ## 1             1     34
+    ## 2             2      8
 
 Now that we have simulated data, we can use one of the `fitEcm` function to estimate population size. What arguments do we need for that function? Notice that the help page tells you what format your data should be in.
 
 ``` r
-ecm <- fitEcm(data=sim,max.pop=300)
+ecm <- fitEcm(data=sim,max.pop=500)
 ```
 
 The `fitEcm` page also describes that output. We are most interested in the population size estimate, which is called `ml.pop.size`. We can extract that using:
@@ -90,7 +90,7 @@ The `fitEcm` page also describes that output. We are most interested in the popu
 ecm$ml.pop.size
 ```
 
-    ## [1] 187
+    ## [1] 136
 
 How much uncertainty is there in our estimate? We can use bootstrap resampling to create confidence intervals. Look up the command `boostrapCapwire`
 
@@ -100,11 +100,11 @@ boot
 ```
 
     ## $ml.pop.size
-    ## [1] 187
+    ## [1] 136
     ## 
     ## $conf.int
     ##  2.5% 97.5% 
-    ##   105   300
+    ##    77   290
 
 Using this 95% confidence interval means there is a 95% chance the real answer is within that range.
 
