@@ -23,8 +23,6 @@ Once you click "Create Project" the files will download from github (you must be
 
 Note: Where did you download the data on your computer? A common mistake is to lose track of your downloads. Navigate to the location where you downloaded the repository. There should be a folder inside called "data". Each week, this folder will contain data needed for the week's homework. You should see a spreadsheet called "wombats.csv". Open it in a spreadsheet program (Excel or Numbers).  
 
-Put up your green card when you have done this
-
      
 
 ### 2. Reading in data from spreadsheets
@@ -80,7 +78,8 @@ sim
 
     ##   capture.class No.Ind
     ## 1             1     42
-    ## 2             2      4
+    ## 2             2      1
+    ## 3             3      2
 
 Now that we have simulated data, we can use one of the `fitEcm` function to estimate population size. What arguments do we need for that function? Notice that the help page tells you what format your data should be in.
 
@@ -94,7 +93,7 @@ The `fitEcm` page also describes that output. We are most interested in the popu
 ecm$ml.pop.size
 ```
 
-    ## [1] 290
+    ## [1] 228
 
 How much uncertainty is there in our estimate? We can use bootstrap resampling to create confidence intervals. Look up the command `boostrapCapwire`
 
@@ -104,11 +103,11 @@ boot
 ```
 
     ## $ml.pop.size
-    ## [1] 290
+    ## [1] 228
     ## 
     ## $conf.int
     ##  2.5% 97.5% 
-    ##   136   500
+    ##   119   500
 
 Using this 95% confidence interval means there is a 95% chance the real answer is within that range. Why is it so large?! What happens if we have more samples?
 
